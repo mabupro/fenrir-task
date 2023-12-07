@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Button, Input } from "@material-tailwind/react";
 
 export const Header = () => {
+
+    const [searchInput, setSearchInput] = useState<string | null>('');
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchInput(e.target.value);
+    }
+
+    const handleSearch = () => {
+        // TODO:検索ロジック記述
+        console.log("検索内容：", searchInput);
+    }
+
     return (
         <Navbar
             variant="gradient"
@@ -18,11 +30,13 @@ export const Header = () => {
                         containerProps={{
                             className: "w-full",
                         }} crossOrigin={undefined}
+                        onChange={(e) => handleInputChange(e)}
                     />
                     <Button
                         size="sm"
                         color="deep-orange"
-                        className="!absolute right-1 top-1 rounded"
+                        className="absolute right-1 top-1 rounded"
+                        onClick={handleSearch}
                     >
                         検索
                     </Button>
