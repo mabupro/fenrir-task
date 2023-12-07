@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, Button, Input } from "@material-tailwind/react";
-import Logo from '../assets/RestaurantNavi.png';
+import Logo from '../assets/RestaurantNavi.svg';
 
 export const Header = () => {
 
