@@ -19,7 +19,7 @@ export const Header = () => {
         <Navbar
             variant="gradient"
             color="orange"
-            className="mt-4 mx-auto md:m-5 max-w-screen-sm md:min-w-[480px] from-gray-100 to-gray-200 p-2 opacity-80"
+            className="max-w-screen-sm md:min-w-[480px] from-gray-100 to-gray-200 p-2 opacity-95"
         >
             <div className="flex w-full justify-start md:justify-center">
                 <img
