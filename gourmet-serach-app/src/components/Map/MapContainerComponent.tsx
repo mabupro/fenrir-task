@@ -1,20 +1,34 @@
 import React from 'react';
-import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet';
+import { MapContainer, TileLayer, ZoomControl, useMap } from 'react-leaflet';
 import { LatLng } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-export const MapContainerComponent = () => {
-    const position = new LatLng(35.681236, 139.767125); // 東京駅の座標
+interface PositionProps {
+    position: {
+        lat: number;
+        lng: number;
+    };
+}
+
+const SetView: React.FC<PositionProps> = ({ position }) => {
+    const map = useMap();
+    map.setView(new LatLng(position.lat, position.lng));
+    return null;
+};
+
+export const MapContainerComponent: React.FC<PositionProps> = ({ position }) => {
+    const mapCenter = new LatLng(position.lat, position.lng);
 
     return (
         <>
             <MapContainer
-                center={position}
+                center={mapCenter}
                 zoom={13}
                 style={{ height: '100vh', width: '100%' }}
                 zoomControl={false}
                 scrollWheelZoom={true}
             >
+                <SetView position={position} />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -22,6 +36,5 @@ export const MapContainerComponent = () => {
                 <ZoomControl position="bottomright" />
             </MapContainer>
         </>
-
     );
 };
