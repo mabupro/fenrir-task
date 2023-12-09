@@ -15,8 +15,8 @@ const SetView: React.FC<PositionProps> = ({ position }) => {
 
     React.useEffect(() => {
         map.setView(new LatLng(position.lat, position.lng), 13);
-    }, [position, map]);
-    
+    }, [position]);
+
     return null;
 };
 
