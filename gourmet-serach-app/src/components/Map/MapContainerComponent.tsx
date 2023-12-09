@@ -13,6 +13,7 @@ export const MapContainerComponent = () => {
                 zoom={13}
                 style={{ height: '100vh', width: '100%' }}
                 zoomControl={false}
+                scrollWheelZoom={true}
             >
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
