@@ -5,11 +5,12 @@ import { RangeSelectButton } from '../components/RangeSelectButton';
 import { searchRestaurantsByLocation } from '../components/Restaurant/RestaurantAPI';
 import { RestaurantList } from '../components/Restaurant/RestaurantList';
 import { Header } from '../components/Header';
+import { Restaurant } from '../components/Restaurant/RestaurantAPI';
 
 export const HomePage = () => {
     const [position, setPosition] = useState({ lat: 35.681236, lng: 139.767125 });
     const [range, setRange] = useState(500);
-    const [restaurants, setRestaurants] = useState([]);
+    const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
     const handleLocationUpdate = (newPosition: { lat: number; lng: number; }) => {
         setPosition(newPosition);
