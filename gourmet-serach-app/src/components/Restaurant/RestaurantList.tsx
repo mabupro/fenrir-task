@@ -42,7 +42,7 @@ export const RestaurantList: React.FC<RestaurantListProps> = ({ restaurants }) =
                 >
                     {isListOpen ? <FaAngleDown /> : <FaAngleUp />}
                     {restaurants.length > 0 && (
-                        <Badge color="red" className="left-14 -top-1 ">
+                        <Badge color="red" className="ml-2">
                             {restaurants.length}
                         </Badge>
                     )}
@@ -60,7 +60,7 @@ export const RestaurantList: React.FC<RestaurantListProps> = ({ restaurants }) =
                                 {restaurant.photo.pc.l && <img src={restaurant.photo.pc.l} alt={restaurant.name} style={{ width: '30%', margin: '10px' }} />}
                                 <div>
                                     <p className="font-bold">{restaurant.name}</p>
-                                    <p className="text-sm">{restaurant.address}</p>
+                                    <p className="text-sm">{restaurant.access}</p>
                                 </div>
                             </ListItem>
                         ))}

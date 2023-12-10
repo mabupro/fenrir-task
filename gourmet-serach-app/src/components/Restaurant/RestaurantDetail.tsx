@@ -31,9 +31,9 @@ export const RestaurantDetail: React.FC<RestaurantDetailProps & { onClose: () =>
     const budgetValue = restaurant.budget ? restaurant.budget.name : '予算不明';
 
     return (
-        <div className="fixed inset-0 bg-white bg-opacity-95 z-50 overflow-auto">
-            <div className="container mx-auto p-4">
-                <div className="flex justify-between items-center mb-4 h-4/5">
+        <div className="absolute top-0 left-0 w-full h-full bg-white p-4 z-10 overflow-auto">
+            <div className="container mx-auto">
+                <div className="flex justify-between items-center mb-4">
                     <button onClick={onClose} className="text-blue-500">
                         <FaArrowLeft className="inline mr-2" />戻る
                     </button>
@@ -56,7 +56,7 @@ export const RestaurantDetail: React.FC<RestaurantDetailProps & { onClose: () =>
                     </div>
                 </div>
                 <Card>
-                    <CardBody>
+                    <CardBody className="overflow-auto">
                         <img src={restaurant.photo.pc.l} alt={restaurant.name} className="w-full max-h-96 object-cover mb-4" />
 
                         <Typography variant="h5" color="gray">{restaurant.name}</Typography>
