@@ -4,11 +4,20 @@ export interface Restaurant {
     id: string;
     name: string;
     address: string;
+    photo: {
+        pc: {
+            l: string;
+        };
+    };
     imageUrl: string;
-    openHours: string;
+    open: string;
     access: string;
-    budget: string;
-    genre: string;
+    budget: {
+        name: string;
+    };
+    genre: {
+        name: string;
+    };
     // その他の必要なプロパティ
 }
 
