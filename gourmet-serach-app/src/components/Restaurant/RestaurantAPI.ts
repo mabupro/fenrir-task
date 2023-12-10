@@ -9,7 +9,6 @@ export interface Restaurant {
             l: string;
         };
     };
-    imageUrl: string;
     open: string;
     access: string;
     budget: {
@@ -18,7 +17,6 @@ export interface Restaurant {
     genre: {
         name: string;
     };
-    // その他の必要なプロパティ
 }
 
 // 現在地に基づくレストラン検索

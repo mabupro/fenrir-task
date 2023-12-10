@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, ListItem } from "@material-tailwind/react";
+import { List, ListItem, Badge } from "@material-tailwind/react";
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa';
 import { RestaurantDetail } from './RestaurantDetail';
 import { Restaurant } from './RestaurantAPI';
@@ -20,8 +20,12 @@ export const RestaurantList: React.FC<RestaurantListProps> = ({ restaurants }) =
     const handleRestaurantClick = (index: number) => {
         setSelectedRestaurant(restaurants[index]);
         setSelectedIndex(index);
-        console.log(restaurants[index]);
     }
+
+    const handleCloseDetail = () => {
+        setSelectedRestaurant(null);
+        setSelectedIndex(-1);
+    };
 
     useEffect(() => {
         if (selectedIndex >= 0 && selectedIndex < restaurants.length) {
@@ -37,6 +41,11 @@ export const RestaurantList: React.FC<RestaurantListProps> = ({ restaurants }) =
                     onClick={toggleList}
                 >
                     {isListOpen ? <FaAngleDown /> : <FaAngleUp />}
+                    {restaurants.length > 0 && (
+                        <Badge color="red" className="left-14 -top-1 ">
+                            {restaurants.length}
+                        </Badge>
+                    )}
                 </button>
             </div>
             {isListOpen && (
@@ -57,12 +66,15 @@ export const RestaurantList: React.FC<RestaurantListProps> = ({ restaurants }) =
                         ))}
                     </List>
                     {selectedRestaurant && (
-                        <RestaurantDetail
-                            restaurant={selectedRestaurant}
-                            restaurants={restaurants}
-                            selectedIndex={selectedIndex}
-                            onSelect={setSelectedIndex}
-                        />
+                        <div className="absolute top-0 left-0 w-full h-full bg-white p-4">
+                            <RestaurantDetail
+                                restaurant={selectedRestaurant}
+                                restaurants={restaurants}
+                                selectedIndex={selectedIndex}
+                                onSelect={setSelectedIndex}
+                                onClose={handleCloseDetail}
+                            />
+                        </div>
                     )}
                 </div>
             )}

@@ -10,7 +10,7 @@ interface RestaurantDetailProps {
     onSelect: (index: number) => void;
 }
 
-export const RestaurantDetail: React.FC<RestaurantDetailProps> = ({ restaurant, restaurants, selectedIndex, onSelect }) => {
+export const RestaurantDetail: React.FC<RestaurantDetailProps & { onClose: () => void }> = ({ restaurant, restaurants, selectedIndex, onSelect, onClose }) => {
     if (!restaurant) {
         return <div className="flex justify-center items-center h-screen">
             <Spinner className="h-10 w-10" />
@@ -31,41 +31,47 @@ export const RestaurantDetail: React.FC<RestaurantDetailProps> = ({ restaurant, 
     const budgetValue = restaurant.budget ? restaurant.budget.name : '予算不明';
 
     return (
-        <div className="restaurant-detail my-10">
-            <Card>
-                <CardBody>
-                    <img src={restaurant.photo.pc.l} alt={restaurant.name} className="w-full mb-4" />
-
-                    <Typography variant="h5" color="gray">{restaurant.name}</Typography>
-                    <Typography color="gray" className="mb-2">{restaurant.address}</Typography>
-
-                    <div className="flex flex-wrap gap-2 my-2">
-                        <Chip color="cyan" value={genreValue} variant="outlined" />
-                        <Chip color="amber" value={budgetValue} variant="outlined" />
+        <div className="fixed inset-0 bg-white bg-opacity-95 z-50 overflow-auto">
+            <div className="container mx-auto p-4">
+                <div className="flex justify-between items-center mb-4 h-4/5">
+                    <button onClick={onClose} className="text-blue-500">
+                        <FaArrowLeft className="inline mr-2" />戻る
+                    </button>
+                    <div>
+                        <Button
+                            color="orange"
+                            size="sm"
+                            onClick={handlePrev}
+                            className="mr-2"
+                        >
+                            <FaArrowLeft />
+                        </Button>
+                        <Button
+                            color="orange"
+                            size="sm"
+                            onClick={handleNext}
+                        >
+                            <FaArrowRight />
+                        </Button>
                     </div>
-
-                    <Typography color="gray">{`営業時間: ${restaurant.open}`}</Typography>
-                    <Typography color="gray">{`アクセス: ${restaurant.access}`}</Typography>
-                </CardBody>
-                <div className="flex justify-between m-4">
-                    <Button
-                        color="blue"
-                        size="sm"
-                        onClick={handlePrev}
-                        className="flex items-center"
-                    >
-                        <FaArrowLeft />
-                    </Button>
-                    <Button
-                        color="blue"
-                        size="sm"
-                        onClick={handleNext}
-                        className="flex items-center"
-                    >
-                        <FaArrowRight />
-                    </Button>
                 </div>
-            </Card>
+                <Card>
+                    <CardBody>
+                        <img src={restaurant.photo.pc.l} alt={restaurant.name} className="w-full max-h-96 object-cover mb-4" />
+
+                        <Typography variant="h5" color="gray">{restaurant.name}</Typography>
+                        <Typography color="gray" className="mb-2">{restaurant.address}</Typography>
+
+                        <div className="flex flex-wrap gap-2 my-2">
+                            <Chip color="cyan" value={genreValue} variant="outlined" />
+                            <Chip color="amber" value={budgetValue} variant="outlined" />
+                        </div>
+
+                        <Typography color="gray">{`営業時間: ${restaurant.open}`}</Typography>
+                        <Typography color="gray">{`アクセス: ${restaurant.access}`}</Typography>
+                    </CardBody>
+                </Card>
+            </div>
         </div>
     );
 };
