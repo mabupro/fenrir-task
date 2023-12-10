@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { List, ListItem } from "@material-tailwind/react";
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // react-router-domのLinkをインポート
+import { useNavigate } from 'react-router-dom';
 
 interface RestaurantListProps {
     restaurants: any[]; // TODO:型宣言

@@ -14,7 +14,7 @@ export const LocateButton: React.FC<LocateButtonProps> = ({ onLocate }) => {
                 (position) => {
                     const { latitude, longitude } = position.coords;
                     onLocate({ lat: latitude, lng: longitude });
-                    // TODO:後で消す ホットペッパー実装後
+                    // TODO:後で消す ホットペッパー実装後　精度良くない要検討
                     console.log(latitude, longitude);
                 },
                 (error) => {
