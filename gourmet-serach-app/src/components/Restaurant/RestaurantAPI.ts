@@ -1,6 +1,6 @@
 const API_KEY = import.meta.env.VITE_HOTPEPPER_API_KEY;
 
-export interface Restaurant {
+export type Restaurant = {
     id: string;
     name: string;
     address: string;
@@ -33,17 +33,17 @@ export const searchRestaurantsByLocation = async (latitude: number, longitude: n
 };
 
 // キーワードに基づくレストラン検索
-export const searchRestaurantsByKeyword = async (keyword: string): Promise<Restaurant[]> => {
-    const url = `/api/hotpepper/gourmet/v1/?key=${API_KEY}&keyword=${encodeURIComponent(keyword)}&count=20&format=json`;
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data.results.shop as Restaurant[];
-    } catch (error) {
-        console.error('Keyword:Error fetching restaurant data:', error);
-        return [];
-    }
-};
+// export const searchRestaurantsByKeyword = async (keyword: string): Promise<Restaurant[]> => {
+//     const url = `/api/hotpepper/gourmet/v1/?key=${API_KEY}&keyword=${encodeURIComponent(keyword)}&count=20&format=json`;
+//     try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         return data.results.shop as Restaurant[];
+//     } catch (error) {
+//         console.error('Keyword:Error fetching restaurant data:', error);
+//         return [];
+//     }
+// };
 
 // 特定のレストランの詳細情報を取得
 export const getRestaurantDetails = async (id: string): Promise<Restaurant | null> => {

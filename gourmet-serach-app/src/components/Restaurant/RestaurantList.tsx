@@ -4,7 +4,7 @@ import { FaAngleUp, FaAngleDown } from 'react-icons/fa';
 import { RestaurantDetail } from './RestaurantDetail';
 import { Restaurant } from './RestaurantAPI';
 
-interface RestaurantListProps {
+type RestaurantListProps =  {
     restaurants: Restaurant[];
 }
 

@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, ZoomControl, Marker, Popup, useMap } from 'rea
 import { LatLng } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-interface MapContainerComponentProps {
+type MapContainerComponentProps = {
     position: {
         lat: number;
         lng: number;

@@ -2,7 +2,7 @@ import React from 'react';
 import { IconButton } from '@material-tailwind/react';
 import { FaLocationArrow } from 'react-icons/fa';
 
-interface LocateButtonProps {
+type LocateButtonProps = {
     onLocate: (coords: { lat: number; lng: number }) => void;
 }
 

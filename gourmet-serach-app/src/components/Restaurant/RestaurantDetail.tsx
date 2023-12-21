@@ -3,7 +3,7 @@ import { Restaurant } from './RestaurantAPI';
 import { Card, CardBody, Typography, Spinner, Chip, Button } from '@material-tailwind/react';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-interface RestaurantDetailProps {
+type RestaurantDetailProps = {
     restaurant: Restaurant | null;
     restaurants: Restaurant[];
     selectedIndex: number;
